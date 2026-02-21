@@ -154,9 +154,8 @@ def collect_episodes(
             adv_log_prob = 0.0
             adv_value = 0.0
 
-        # Step environment
-        next_obs, reward, terminated, truncated, info = env.step(executed_action)
-        cost = info.get("cost", 0.0)
+        # Step environment (safety-gymnasium returns 6 values)
+        next_obs, reward, cost, terminated, truncated, info = env.step(executed_action)
         done = terminated or truncated
 
         all_obs.append(norm_obs)
@@ -332,9 +331,9 @@ def evaluate(
             else:
                 executed_action = action
 
-            obs, reward, terminated, truncated, info = env.step(executed_action)
+            obs, reward, cost, terminated, truncated, info = env.step(executed_action)
             ep_reward += reward
-            ep_cost += info.get("cost", 0.0)
+            ep_cost += cost
             done = terminated or truncated
 
         ep_rewards.append(ep_reward)

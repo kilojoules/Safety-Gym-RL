@@ -2,7 +2,7 @@
 name = "safety-gym-rl"
 version = "0.1.0"
 description = "A-parameter hypothesis testbed using Safety Gym adversarial continuous control"
-requires-python = ">= 3.10"
+requires-python = ">= 3.9"
 dependencies = [
     "numpy",
     "matplotlib",
@@ -15,13 +15,20 @@ channels = ["conda-forge", "pytorch"]
 platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.dependencies]
-python = ">=3.10"
-numpy = "*"
+python = "3.9.*"
+numpy = ">=1.21,<1.24"
 matplotlib = "*"
 pytorch = "*"
+sdl2 = "*"
+sdl2_image = "*"
+sdl2_mixer = "*"
+sdl2_ttf = "*"
+freetype = "*"
+pkg-config = "*"
+portmidi = "*"
 
 [tool.pixi.pypi-dependencies]
-safety-gymnasium = "*"
+safety-gymnasium = "==1.0.0"
 
 [tool.pixi.tasks]
 selfplay = "python train_selfplay.py --timesteps 300000"
