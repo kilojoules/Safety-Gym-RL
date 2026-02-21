@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pixi/
+pixi.lock
+experiments/results/*/seed*/
+experiments/results/selfplay/
+*.egg-info/
+.env
